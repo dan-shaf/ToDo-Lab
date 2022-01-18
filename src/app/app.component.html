@@ -1,0 +1,42 @@
+
+Your To Do List:<br><br>
+<table>
+  <tr>
+    <th align="left">Task Name</th>
+    <th></th>
+  </tr>
+  <ng-container *ngFor="let tdlist of ToDoList">
+    <tr>
+        <th align="left"><div *ngIf="!tdlist.completed; else finished">{{tdlist.task}}</div><ng-template #finished><div style="text-decoration: line-through;">{{tdlist.task}}</div></ng-template></th>
+        
+        <th> 
+          
+          <div *ngIf="!tdlist.completed"><button (click)="completeTask(tdlist.task)">Complete Task</button></div>
+          
+       </th>
+       <th> 
+          
+        <button (click)="removeTask(tdlist.task)">Remove Task</button>
+        
+     </th>
+    </tr>
+    </ng-container>
+</table>
+
+<br>
+
+Add more to list:<br>
+Task: <input type="text" [(ngModel)]="newtask"><br>
+<button (click)="addTask()">Add Task</button>
+<br>
+
+
+<br>
+Edit Task: *broken*<br>
+Old Task: <input type="text" [(ngModel)]="oldtask"><br>
+New Task: <input type="text" [(ngModel)]="edittask"><br>
+<button (click)="editTask(this.oldtask)">Edit Task</button>
+<br><br>
+
+{{this.oldtask}}
+{{this.edittask}}
